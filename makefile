@@ -18,6 +18,7 @@
 # Opendous Inc.
 # Denver Gingerich
 # Chris Lockfort
+# Andrew LeCain
 #
 #----------------------------------------------------------------------------
 # On command line:
@@ -538,7 +539,7 @@ gccversion :
 
 # Program the device.  
 program: $(TARGET).hex $(TARGET).eep
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) $(AVRDUDE_WRITE_EEPROM)
+	teensy_loader_cli $(AVRDUDE) -mmcu=$(MCU) -v -w $(TARGET).hex 
 
 flip: $(TARGET).hex
 	batchisp -hardware usb -device $(MCU) -operation erase f
